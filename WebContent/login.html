@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>登录页面</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+		<script type="text/javascript">
+			Cufon.replace('h1',{ textShadow: '1px 1px #fff'});
+			Cufon.replace('h2',{ textShadow: '1px 1px #fff'});
+			Cufon.replace('h3',{ textShadow: '1px 1px #000'});
+			Cufon.replace('.back');
+		</script>
+    </head>
+    <body>
+		<div class="wrapper">
+			<h1>Animated Form Switching</h1>
+			<h2>Demo: click the <span>orange links</span> to see the form animating and switching</h2>
+			<div class="content">
+				<div id="form_wrapper" class="form_wrapper">
+					<form class="login active" action="login.do" method="post">
+						<h3>login</h3>
+						<div>
+							<label for="username">用户名:</label>
+							<input type="text" name="username" id="username">
+						</div>
+						<div>
+							<label for="password">密码: <a href="forgot_password.html" rel="forgot_password" class="forgot linkform">忘记密码?</a></label>
+							<input type="password" name="password" id="password">
+						</div>
+						<div class="bottom">
+							<div class="remember"><input type="checkbox" /><span>保持登录</span></div>
+							<input type="submit" value="登录"></input>
+							<a href="register.html" rel="register" class="linkform">还没有帐号？注册</a>
+							<div class="clear"></div>
+						</div>
+					</form>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+    </body>
+</html>

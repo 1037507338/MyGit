@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>注册</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	var c = [ [ "北京", "上海" ], [ "哈尔滨", "佳木斯" ], [ "济南", "青岛" ], [ "广州", "深圳" ] ];
+	$(function() {
+		var province = $("#province");
+		var city = $("#city");
+		province.change(function() {
+			city.empty();
+			for (var i = 0; i < c[$("#province option:selected").attr("id")].length; i++) {
+				city.append($("<option>").val(c[$("#province option:selected").attr("id")][i]).html(c[$("#province option:selected").attr("id")][i]));
+			}
+		});
+		province.change();
+	});
+	$(function() {
+		$("#repeat_pwd").keyup(function() {
+			var password = $("#password").val();
+			var repeat_pwd = $("#repeat_pwd").val();
+			if (password == repeat_pwd) {
+				$("#repeat_span").html("相同".fontcolor("green"));
+				$("#reg_btn").removeAttr("disabled");
+			} else {
+				$("#repeat_span").html("不同".fontcolor("red"));
+				$("#reg_btn").attr("disabled", "disabled");
+			}
+		})
+		$("#reg_btn").click(function() {
+			var username = $("#username").val();
+			if ($.trim(username).length < 3) {
+				$("#verify_span").html("用户名不合法".fontcolor("red"));
+				return;
+			} else {
+				$("#verify_span").html("用户名合法".fontcolor("green"));
+			}
+			$("#reg_form").submit();
+		});
+	});
+</script>
+<script type="text/javascript">
+	Cufon.replace('h1', {textShadow : '1px 1px #fff'});
+	Cufon.replace('h2', {textShadow : '1px 1px #fff'});
+	Cufon.replace('h3', {textShadow : '1px 1px #000'});
+	Cufon.replace('.back');
+</script>
+</head>
+<body>
+		<div class="wrapper">
+			<h1>Animated Form Switching</h1>
+			<h2>Demo: click the <span>orange links</span> to see the form animating and switching</h2>
+			<div class="content">
+				<div id="form_wrapper" class="form_wrapper">
+					<form class="register active" action="reg.do" method="post" id="reg_form">
+						<h3>注册</h3>
+						<div class="column">
+							<div>
+								<label for="username">用户名:</label>
+								<input type="text" name="username" id="username"/>
+								<span class="error" id="verify_span"></span>
+							</div>
+							<div>
+								<label for="realname">真实姓名:</label>
+								<input type="text" name="realname" id="realname"/>
+							</div>
+							<div>
+								<label for="birth">生日:</label>
+								<input type="date" name="birth"/>
+							</div>
+							<div class="exp">
+								<label for="sex">性别:</label>
+								<label for="male"><input type="radio" name="sex" value="男" checked>男</label>
+								<label for="female"><input type="radio" name="sex" value="女">女</label>
+							</div>
+						</div>
+						<div class="column">
+							<div>
+								<label for="password">密码:</label>
+								<input type="password" name="password" id="password"/>
+							</div>
+							<div>
+								<label for="repeat_pwd">确认密码:</label>
+								<input type="password" name="repeat_pwd" id="repeat_pwd"/>
+							</div>
+							<div>
+								<label for="address">住址:</label>
+								<select id="province" name="province">
+									<option id="0" value="直辖市">直辖市</option>
+									<option id="1" value="黑龙江">黑龙江</option>
+									<option id="2" value="山东">山东</option>
+									<option id="3" value="广东">广东</option>
+								</select>
+								<select id="city" name="city"></select>
+							</div>
+							<div class="exp">
+								<label for="hobby">爱好:</label>
+								<label for="sport"><input type="checkbox" name="hobby" value="运动">运动</label>
+								<label for="read"><input type="checkbox" name="hobby" value="读书">读书</label>
+								<label for="game"><input type="checkbox" name="hobby" value="游戏">游戏</label>
+								<label for="code"><input type="checkbox" name="hobby" value="编程">编程</label>
+							</div>
+						</div>
+						<div class="bottom">
+							<div class="remember">
+								<input type="checkbox" />
+								<span>Send me updates</span>
+							</div>
+							<input type="button" id="reg_btn" value="注册" />
+							<a href="login.html" rel="login" class="linkform">You have an account already? Log in here</a>
+							<div class="clear"></div>
+						</div>
+					</form>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+    </body>
+</html>
